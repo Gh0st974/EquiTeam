@@ -9,7 +9,8 @@ const CONFIG = {
   STORAGE_KEYS: {
     GROUPS:     'equiteam_groups',
     ACTIVITIES: 'equiteam_activities',
-    SESSIONS:   'equiteam_sessions'
+    SESSIONS:   'equiteam_sessions',
+    HISTORY:    'equiteam_history'       // ← AJOUT
   },
 
   // Types de critères disponibles

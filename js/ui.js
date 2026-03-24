@@ -3,19 +3,50 @@
 
 const UI = (() => {
 
+  // ── Pile de navigation (historique des vues) ───────────────────
+  const _history = [];
+
   // ── Navigation entre vues ──────────────────────────────────────
-  function showView(viewId, showBack = false) {
+  function showView(viewId, pushHistory = false) {
+    // Empile la vue courante si demandé
+    if (pushHistory) {
+      const current = document.querySelector('.view.active');
+      if (current) {
+        const currentId = current.id.replace('view-', '');
+        _history.push(currentId);
+      }
+    }
+
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     const target = document.getElementById(`view-${viewId}`);
     if (target) target.classList.add('active');
 
-    // Bouton retour
+    // Bouton retour visible si historique non vide
     const btnBack = document.getElementById('btn-back');
-    btnBack.classList.toggle('hidden', !showBack);
+    if (btnBack) btnBack.classList.toggle('hidden', _history.length === 0);
 
     // Nav active
     document.querySelectorAll('.nav-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.view === viewId);
+    });
+  }
+
+  // ── Retour à la vue précédente ─────────────────────────────────
+  function goBack() {
+    if (_history.length === 0) return;
+    const previous = _history.pop();
+
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    const target = document.getElementById(`view-${previous}`);
+    if (target) target.classList.add('active');
+
+    // Bouton retour visible si historique encore non vide
+    const btnBack = document.getElementById('btn-back');
+    if (btnBack) btnBack.classList.toggle('hidden', _history.length === 0);
+
+    // Nav active
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.view === previous);
     });
   }
 
@@ -91,5 +122,9 @@ const UI = (() => {
     });
   }
 
-  return { showView, toast, openModal, closeModal, confirm, spinner, empty, formatDate };
+  return {
+    showView, goBack,                          // ← goBack ajouté
+    toast, openModal, closeModal, confirm,
+    spinner, empty, formatDate
+  };
 })();

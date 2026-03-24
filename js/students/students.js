@@ -3,6 +3,20 @@
 
 const Students = (() => {
 
+  // ── Récupérer tous les élèves d'un groupe ─────────────────────
+  // Alias de getByGroup — requis par l'interface standard du module
+  function getAll(groupId) {
+    const group = Groups.getById(groupId);
+    return group ? group.students : [];
+  }
+
+  // ── Récupérer un élève par son ID ─────────────────────────────
+  function getById(groupId, studentId) {
+    const group = Groups.getById(groupId);
+    if (!group) return null;
+    return group.students.find(s => s.id === studentId) || null;
+  }
+
   // ── Ajouter un élève à un groupe ──────────────────────────────
   function add(groupId, firstname, lastname, gender = '') {
     const group = Groups.getById(groupId);
@@ -48,7 +62,25 @@ const Students = (() => {
     Groups.saveStudents(groupId, group.students);
   }
 
-  // ── Enregistrer un score (une valeur par critère) ─────────────
+  // ── Enregistrer les notes d'un élève pour une activité ────────
+  // saveRatings(groupId, studentId, { activityId, criterionId, value })
+  // ou saveRatings(groupId, studentId, ratingsMap) selon usage appelant
+  function saveRatings(groupId, studentId, ratings) {
+    const group = Groups.getById(groupId);
+    if (!group) return null;
+    const idx = group.students.findIndex(s => s.id === studentId);
+    if (idx === -1) return null;
+
+    // ratings = { activityId: { criterionId: value, ... }, ... }
+    group.students[idx].scores = {
+      ...group.students[idx].scores,
+      ...ratings
+    };
+    Groups.saveStudents(groupId, group.students);
+    return group.students[idx];
+  }
+
+  // ── Enregistrer un score unique (critère individuel) ──────────
   function setScore(groupId, studentId, activityId, criterionId, value) {
     const group = Groups.getById(groupId);
     if (!group) return;
@@ -61,11 +93,17 @@ const Students = (() => {
     Groups.saveStudents(groupId, group.students);
   }
 
-  // ── Récupérer les élèves d'un groupe ─────────────────────────
-  function getByGroup(groupId) {
-    const group = Groups.getById(groupId);
-    return group ? group.students : [];
-  }
+  // ── Alias rétrocompatibilité ───────────────────────────────────
+  function getByGroup(groupId) { return getAll(groupId); }
 
-  return { add, update, remove, setScore, getByGroup };
+  return {
+    getAll,       // ← ajouté
+    getById,      // ← ajouté
+    add,
+    update,
+    remove,
+    saveRatings,  // ← ajouté
+    setScore,
+    getByGroup
+  };
 })();
