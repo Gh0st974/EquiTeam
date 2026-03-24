@@ -75,6 +75,9 @@ const Storage = (() => {
     return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
   }
 
-  return { getGroups, setGroups, getActivities, setActivities,
-           getSessions, setSessions, exportAll, importAll, generateId };
+  return { 
+    get, set,  // ← ajout des 2 fonctions génériques
+    getGroups, setGroups, getActivities, setActivities,
+    getSessions, setSessions, exportAll, importAll, generateId 
+  };
 })();
