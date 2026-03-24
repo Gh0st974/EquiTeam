@@ -1,0 +1,11 @@
+/* 📄 Fichier : css/components/history.css
+   🎯 Rôle : Styles de l'historique des séances */
+
+.history-card {
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+}
+
+.history-info h3  { font-size: 1rem; font-weight: 700; }
+.history-info p   { font-size: .85rem; color: var(--text-muted); margin-top: .2rem; }
+.history-actions  { display: flex; gap: .5rem; }

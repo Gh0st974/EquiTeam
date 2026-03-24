@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+  📄 Fichier : index.html
+  🎯 Rôle : Shell HTML principal de l'application SPA ÉquiTeam
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="description" content="ÉquiTeam — Générateur d'équipes équilibrées pour enseignants EPS" />
+  <title>ÉquiTeam</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components/dashboard.css" />
+  <link rel="stylesheet" href="css/components/groups.css" />
+  <link rel="stylesheet" href="css/components/activities.css" />
+  <link rel="stylesheet" href="css/components/session.css" />
+  <link rel="stylesheet" href="css/components/history.css" />
+  <link rel="stylesheet" href="css/components/modals.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="header-left">
+      <button id="btn-back" class="btn-back hidden" aria-label="Retour">&#8592;</button>
+      <h1 class="app-title">ÉquiTeam</h1>
+    </div>
+    <nav class="header-nav">
+      <button class="nav-btn active" data-view="dashboard">🏠</button>
+      <button class="nav-btn" data-view="groups">👥</button>
+      <button class="nav-btn" data-view="activities">🏃</button>
+      <button class="nav-btn" data-view="history">📅</button>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="app-main" class="app-main">
+
+    <!-- VUE DASHBOARD -->
+    <section id="view-dashboard" class="view active">
+      <div class="view-header">
+        <h2>Tableau de bord</h2>
+        <button id="btn-new-session" class="btn btn-primary">⚡ Nouvelle séance</button>
+      </div>
+      <div id="dashboard-content"></div>
+    </section>
+
+    <!-- VUE GROUPES -->
+    <section id="view-groups" class="view">
+      <div class="view-header">
+        <h2>Groupes</h2>
+        <button id="btn-new-group" class="btn btn-primary">➕ Nouveau groupe</button>
+      </div>
+      <div id="groups-content"></div>
+    </section>
+
+    <!-- VUE DÉTAIL GROUPE -->
+    <section id="view-group-detail" class="view">
+      <div id="group-detail-content"></div>
+    </section>
+
+    <!-- VUE ACTIVITÉS -->
+    <section id="view-activities" class="view">
+      <div class="view-header">
+        <h2>Activités</h2>
+        <button id="btn-new-activity" class="btn btn-primary">➕ Nouvelle activité</button>
+      </div>
+      <div id="activities-content"></div>
+    </section>
+
+    <!-- VUE DÉTAIL ACTIVITÉ -->
+    <section id="view-activity-detail" class="view">
+      <div id="activity-detail-content"></div>
+    </section>
+
+    <!-- VUE SÉANCE -->
+    <section id="view-session" class="view">
+      <div id="session-content"></div>
+    </section>
+
+    <!-- VUE HISTORIQUE -->
+    <section id="view-history" class="view">
+      <div class="view-header">
+        <h2>Historique</h2>
+      </div>
+      <div id="history-content"></div>
+    </section>
+
+    <!-- VUE DÉTAIL HISTORIQUE -->
+    <section id="view-history-detail" class="view">
+      <div id="history-detail-content"></div>
+    </section>
+
+  </main>
+
+  <!-- ZONE TOAST -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ZONE MODALE -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div id="modal-box" class="modal-box"></div>
+  </div>
+
+  <!-- JS — ordre de chargement important -->
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/groups/groups.js"></script>
+  <script src="js/groups/groups.ui.js"></script>
+  <script src="js/students/students.js"></script>
+  <script src="js/students/students.ui.js"></script>
+  <script src="js/students/students.csv.js"></script>
+  <script src="js/activities/activities.js"></script>
+  <script src="js/activities/activities.ui.js"></script>
+  <script src="js/session/algo.js"></script>
+  <script src="js/session/session.js"></script>
+  <script src="js/session/session.ui.js"></script>
+  <script src="js/session/teams.ui.js"></script>
+  <script src="js/history/history.js"></script>
+  <script src="js/history/history.ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

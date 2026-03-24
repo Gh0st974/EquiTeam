@@ -1,0 +1,41 @@
+/* 📄 Fichier : css/components/session.css
+   🎯 Rôle : Styles du formulaire de séance et des équipes */
+
+.session-form .form-section { margin-bottom: 1.25rem; }
+.form-subtitle { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+.form-actions  { margin-top: 1.5rem; }
+
+/* ── Meta séance ─────────────────────────────────────────── */
+.session-meta p { margin-bottom: .4rem; font-size: .95rem; }
+
+/* ── Grille équipes ──────────────────────────────────────── */
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.team-card      { padding: 1rem; }
+.team-header    {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: .75rem;
+}
+.team-header h3 { font-size: 1rem; font-weight: 700; }
+.team-score     { font-size: .8rem; color: var(--text-muted); }
+
+.team-members   { display: flex; flex-direction: column; gap: .3rem; }
+.team-member    {
+  display: flex; justify-content: space-between;
+  font-size: .875rem; padding: .25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.team-member:last-child { border-bottom: none; }
+.member-score   { font-size: .75rem; color: var(--text-muted); }
+.team-count     { margin-top: .75rem; font-size: .8rem; color: var(--text-muted); text-align: right; }
+
+/* ── Boutons actions séance ──────────────────────────────── */
+.session-actions {
+  display: flex; gap: .75rem; flex-wrap: wrap;
+  justify-content: center; margin-top: 1.5rem;
+}

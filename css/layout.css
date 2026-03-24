@@ -1,0 +1,118 @@
+/* 📄 Fichier : css/layout.css
+   🎯 Rôle : Variables CSS, layout principal, structure des vues */
+
+/* ── Variables ──────────────────────────────────────────────── */
+:root {
+  --primary:      #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary:    #64748b;
+  --success:      #16a34a;
+  --danger:       #dc2626;
+  --warning:      #d97706;
+  --bg:           #f1f5f9;
+  --bg-card:      #ffffff;
+  --text:         #1e293b;
+  --text-muted:   #94a3b8;
+  --border:       #e2e8f0;
+  --radius:       12px;
+  --radius-sm:    8px;
+  --shadow:       0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg:    0 8px 32px rgba(0,0,0,0.16);
+  --header-h:     60px;
+  --transition:   0.2s ease;
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: var(--primary);
+  color: white;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+.header-left  { display: flex; align-items: center; gap: .75rem; }
+.app-title    { font-size: 1.25rem; font-weight: 700; }
+.btn-back     {
+  background: rgba(255,255,255,0.2);
+  color: white; border-radius: 8px;
+  padding: .4rem .8rem; font-size: 1rem;
+  transition: background var(--transition);
+}
+.btn-back:hover { background: rgba(255,255,255,0.35); }
+.btn-back.hidden { display: none; }
+
+/* ── Nav ─────────────────────────────────────────────────────── */
+.header-nav   { display: flex; gap: .5rem; }
+.nav-btn {
+  background: transparent; color: white;
+  padding: .4rem .6rem; border-radius: var(--radius-sm);
+  font-size: 1.1rem; transition: background var(--transition);
+}
+.nav-btn:hover  { background: rgba(255,255,255,0.2); }
+.nav-btn.active { background: rgba(255,255,255,0.3); }
+
+/* ── Main ────────────────────────────────────────────────────── */
+.app-main {
+  margin-top: var(--header-h);
+  padding: 1.25rem;
+  max-width: 900px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* ── Vues ────────────────────────────────────────────────────── */
+.view         { display: none; }
+.view.active  { display: block; }
+
+/* ── View header ─────────────────────────────────────────────── */
+.view-header {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem; flex-wrap: wrap; gap: .5rem;
+}
+.view-header h2 { font-size: 1.4rem; font-weight: 700; color: var(--text); }
+
+/* ── Cards ───────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* ── Boutons ─────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .4rem; padding: .55rem 1.1rem;
+  border-radius: var(--radius-sm); font-weight: 600;
+  font-size: .9rem; transition: filter var(--transition), opacity var(--transition);
+}
+.btn:hover   { filter: brightness(1.08); }
+.btn:active  { filter: brightness(.95); }
+.btn-primary   { background: var(--primary);   color: white; }
+.btn-secondary { background: var(--secondary); color: white; }
+.btn-danger    { background: var(--danger);    color: white; }
+.btn-success   { background: var(--success);   color: white; }
+.btn-sm        { padding: .3rem .65rem; font-size: .8rem; }
+.btn-full      { width: 100%; }
+
+/* ── Inputs ──────────────────────────────────────────────────── */
+.input {
+  width: 100%; padding: .6rem .9rem;
+  border: 2px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--bg); color: var(--text);
+  transition: border-color var(--transition);
+  display: block; margin-top: .3rem;
+}
+.input:focus { border-color: var(--primary); }
+
+label { font-size: .9rem; font-weight: 600; color: var(--text); }
+
+/* ── Utilitaires ─────────────────────────────────────────────── */
+.muted        { color: var(--text-muted); font-size: .85rem; }
+.empty-state  { text-align: center; padding: 2rem; color: var(--text-muted); }
+.action-bar   { margin-bottom: 1rem; }
+.hidden       { display: none !important; }

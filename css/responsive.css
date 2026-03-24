@@ -1,0 +1,23 @@
+/* 📄 Fichier : css/responsive.css
+   🎯 Rôle : Adaptations responsive mobile / tablette / desktop */
+
+/* ── Tablette ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .app-main    { padding: 1rem .75rem; }
+  .teams-grid  { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .dashboard-stats { grid-template-columns: repeat(2, 1fr); }
+  .session-actions { flex-direction: column; }
+  .session-actions .btn { width: 100%; }
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .app-title   { font-size: 1rem; }
+  .view-header { flex-direction: column; align-items: flex-start; }
+  .view-header .btn { width: 100%; justify-content: center; }
+  .teams-grid  { grid-template-columns: 1fr; }
+  .dashboard-stats { grid-template-columns: repeat(2, 1fr); }
+  .modal-box   { max-height: 95vh; }
+  .card-actions { width: 100%; justify-content: flex-end; }
+  .rating-input { width: 70px; }
+}

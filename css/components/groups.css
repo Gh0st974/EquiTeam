@@ -1,0 +1,61 @@
+/* 📄 Fichier : css/components/groups.css
+   🎯 Rôle : Styles des cartes groupes et élèves */
+
+.group-card,
+.student-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.card-info h3    { font-size: 1rem; font-weight: 700; }
+.card-info p     { font-size: .85rem; color: var(--text-muted); margin-top: .2rem; }
+.card-actions    { display: flex; gap: .5rem; flex-shrink: 0; }
+
+/* ── Formulaire import CSV ──────────────────────────────────── */
+.csv-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition);
+  margin-top: .5rem;
+}
+
+.csv-zone:hover { border-color: var(--primary); }
+.csv-zone input[type="file"] { display: none; }
+
+/* ── Rating élèves ──────────────────────────────────────────── */
+.rating-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--border);
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.rating-row:last-child { border-bottom: none; }
+.rating-label { font-size: .9rem; flex: 1; }
+
+.rating-input {
+  width: 90px;
+  padding: .3rem .5rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+}
+
+/* ── Absent grid ────────────────────────────────────────────── */
+.absent-grid  { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+.absent-item  {
+  display: flex; align-items: center; gap: .4rem;
+  background: var(--bg); border-radius: var(--radius-sm);
+  padding: .4rem .75rem; font-size: .85rem; cursor: pointer;
+}

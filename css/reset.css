@@ -1,0 +1,21 @@
+/* 📄 Fichier : css/reset.css
+   🎯 Rôle : Reset CSS universel */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+input, select, textarea {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
