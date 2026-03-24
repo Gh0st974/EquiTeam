@@ -1,47 +1,101 @@
-/* 📄 Fichier : css/components/dashboard.css
-   🎯 Rôle : Styles du tableau de bord */
+/* 📄 Fichier : css/components/dashboard.css */
+/* 🎯 Rôle : Styles du tableau de bord */
 
+/* ── Grille de stats ── */
 .dashboard-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: flex;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .stat-card {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  flex: 1;
+  min-width: 100px;
+  background: var(--color-white, #fff);
+  border-radius: var(--radius, 12px);
   padding: 1.25rem 1rem;
   text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
-.stat-card .stat-value {
+.stat-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
   font-size: 2rem;
-  font-weight: 800;
-  color: var(--primary);
-}
-
-.stat-card .stat-label {
-  font-size: .85rem;
-  color: var(--text-muted);
-  margin-top: .25rem;
-}
-
-.recent-sessions h3 {
-  font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: .75rem;
+  color: var(--color-primary, #2563eb);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--color-muted, #6b7280);
+  margin-top: 0.25rem;
+}
+
+/* ── Séances récentes ── */
+.dashboard-recent {
+  background: var(--color-white, #fff);
+  border-radius: var(--radius, 12px);
+  padding: 1.25rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text, #1e293b);
+  margin-bottom: 0.75rem;
+}
+
+.recent-sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .recent-session-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: .75rem 0;
-  border-bottom: 1px solid var(--border);
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  background: var(--color-bg, #f1f5f9);
+  border-radius: 8px;
+  font-size: 0.875rem;
 }
 
-.recent-session-item:last-child { border-bottom: none; }
+.recent-session-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
 
-.recent-session-info p { font-size: .85rem; color: var(--text-muted); }
+.recent-session-name {
+  font-weight: 500;
+  color: var(--color-text, #1e293b);
+}
+
+.recent-session-date {
+  font-size: 0.75rem;
+  color: var(--color-muted, #6b7280);
+}
+
+.recent-session-teams {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary, #2563eb);
+  white-space: nowrap;
+}
+
+/* ── Message vide ── */
+.empty-msg {
+  text-align: center;
+  color: var(--color-muted, #6b7280);
+  font-size: 0.9rem;
+  padding: 2rem 1rem;
+  line-height: 1.6;
+}
