@@ -5,8 +5,8 @@ const SessionUI = (() => {
 
   // ── Afficher le formulaire de configuration ───────────────────
   function renderForm() {
-    const container = document.getElementById('session-form-content');
-    const groups    = Groups.getAll();
+    const container  = document.getElementById('session-form-content');
+    const groups     = Groups.getAll();
     const activities = Activities.getAll();
 
     if (!groups.length) {
@@ -65,13 +65,15 @@ const SessionUI = (() => {
 
   // ── Charger la liste des absents ──────────────────────────────
   function loadAbsentList() {
-    const groupId = document.getElementById('sess-group').value;
-    const group   = Groups.getById(groupId);
+    const groupId   = document.getElementById('sess-group').value;
+    const group     = Groups.getById(groupId);
     const container = document.getElementById('absent-list');
-    if (!group || !group.students.length) {
+
+    if (!group || !group.students || !group.students.length) {
       container.innerHTML = '<p class="muted">Aucun élève dans ce groupe.</p>';
       return;
     }
+
     container.innerHTML = group.students.map(s => `
       <label class="absent-item">
         <input type="checkbox" class="absent-check" value="${s.id}" />
@@ -92,8 +94,8 @@ const SessionUI = (() => {
     if (!session) { UI.toast('Erreur lors de la génération', 'error'); return; }
     if (!session.teams.length) { UI.toast('Pas assez d\'élèves présents', 'error'); return; }
 
-    TeamsUI.render(session);
     UI.showView('session-result', true);
+    TeamsUI.render(session);
   }
 
   return { renderForm };

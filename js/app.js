@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Bouton nouvelle séance (dashboard) ───────────────────────
   document.getElementById('btn-new-session').addEventListener('click', () => {
-    SessionUI.renderForm();
     UI.showView('session-form', true);
+    SessionUI.renderForm();
   });
 
   // ── Bouton nouveau groupe ─────────────────────────────────────
@@ -47,10 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Dispatcher de rendu par vue ───────────────────────────────
   function renderView(view) {
     switch (view) {
-      case 'dashboard':   DashboardUI.render();    break;
-      case 'groups':      GroupsUI.render();        break;
-      case 'activities':  ActivitiesUI.render();    break;
-      case 'history':     HistoryUI.render();       break;
+      case 'dashboard':  DashboardUI.render();   break;
+      case 'groups':     GroupsUI.render();       break;
+      case 'activities': ActivitiesUI.render();   break;
+      case 'history':    HistoryUI.render();      break;
     }
   }
+
 });
